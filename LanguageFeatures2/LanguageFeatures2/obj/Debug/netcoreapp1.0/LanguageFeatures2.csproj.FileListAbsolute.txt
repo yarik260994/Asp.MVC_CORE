@@ -1,0 +1,11 @@
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\bin\Debug\netcoreapp1.0\LanguageFeatures2.deps.json
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\bin\Debug\netcoreapp1.0\LanguageFeatures2.runtimeconfig.json
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\bin\Debug\netcoreapp1.0\LanguageFeatures2.runtimeconfig.dev.json
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\bin\Debug\netcoreapp1.0\LanguageFeatures2.dll
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\bin\Debug\netcoreapp1.0\LanguageFeatures2.pdb
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.csprojAssemblyReference.cache
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.csproj.CoreCompileInputs.cache
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.AssemblyInfoInputs.cache
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.AssemblyInfo.cs
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.dll
+c:\users\ymaslay\source\repos\LanguageFeatures2\LanguageFeatures2\obj\Debug\netcoreapp1.0\LanguageFeatures2.pdb
