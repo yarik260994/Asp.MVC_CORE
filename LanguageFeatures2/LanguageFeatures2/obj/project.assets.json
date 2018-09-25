@@ -10796,11 +10796,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\ymaslay\\source\\repos\\LanguageFeatures2\\LanguageFeatures2\\LanguageFeatures2.csproj",
+      "projectUniqueName": "C:\\Users\\ymaslay\\Desktop\\Core\\Asp.MVC_CORE\\LanguageFeatures2\\LanguageFeatures2\\LanguageFeatures2.csproj",
       "projectName": "LanguageFeatures2",
-      "projectPath": "c:\\users\\ymaslay\\source\\repos\\LanguageFeatures2\\LanguageFeatures2\\LanguageFeatures2.csproj",
+      "projectPath": "C:\\Users\\ymaslay\\Desktop\\Core\\Asp.MVC_CORE\\LanguageFeatures2\\LanguageFeatures2\\LanguageFeatures2.csproj",
       "packagesPath": "C:\\Users\\ymaslay\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\ymaslay\\source\\repos\\LanguageFeatures2\\LanguageFeatures2\\obj\\",
+      "outputPath": "C:\\Users\\ymaslay\\Desktop\\Core\\Asp.MVC_CORE\\LanguageFeatures2\\LanguageFeatures2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ymaslay\\AppData\\Roaming\\NuGet\\NuGet.Config",
