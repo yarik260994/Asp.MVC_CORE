@@ -1,9 +1,0 @@
-{
-    "name": "KioskApp",
-    "api": {
-        "host": "10.176.255.115",
-        "port": "2608"
-    },
-    "title": "KioskApp",
-    "version": "1.0"
-}
