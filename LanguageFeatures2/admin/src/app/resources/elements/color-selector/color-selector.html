@@ -1,0 +1,16 @@
+﻿<template>
+        <require from="./color-selector.css"></require>
+    <div class="color-selector">
+        <div class="btn-group">
+            <button type="button" class="btn pmd-ripple-effect btn-default" focusout.trigger="onBlurHideColor($event)"  click.delegate="onClickShowColor()">
+                <div class="${colorSelectorType == 'backgroundColor'? 'selected-color' : 'selected-font-color'}" css="background-color: #${selectedColor}"></div>
+                <span if.bind="colorSelectorType == 'backgroundColor'" class="mdi mdi-format-color-fill"></span>
+                <span else class="color-selector-text">A</span>
+                <span class="mdi mdi-menu-down"></span>
+            </button>
+            <div if.bind="showColor"  class="dropdown-menu colorschemebox"> 
+                    <button repeat.for="color of colors" type="button" click.delegate="onSelectedColor(color)" css="background-color: #${color}" class="btn btn-default colorscheme"></button>
+            </div>
+        </div>
+    </div>
+    </template>

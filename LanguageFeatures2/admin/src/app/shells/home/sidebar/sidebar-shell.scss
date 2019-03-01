@@ -1,0 +1,22 @@
+﻿.sidebar-shell-wrapper {
+  height: 100% !important;
+
+  .height-100-relative {
+    .pmd-card-title-text {
+      padding: 10px;
+      background: #eee;
+      text-align: center;
+    }
+    height: 100% !important;
+
+    .pmd-card-body {
+      height: calc(100% - 112px);
+      display: block;
+      position: relative;
+    }
+
+    .btn.width-100 {
+      padding: 12px 5px;
+    }
+  }
+}

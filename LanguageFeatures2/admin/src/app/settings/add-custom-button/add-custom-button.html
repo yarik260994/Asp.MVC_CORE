@@ -1,0 +1,34 @@
+﻿<template>
+        <require from="./add-custom-button.css"></require>
+    <div class="add-btn-modal">
+    <ux-dialog class="ux-dialog-sm">
+        <ux-dialog-header class="modal-header">
+            <div class="modal-title">
+                Добавить новою кнопку
+            </div>
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <form class="bg-white">
+                <div class="form-group">
+                    <select value.bind="selectedButtonType" class="form-control">
+                            <option repeat.for="buttonType of buttonTypes" model.bind="buttonType">
+                             ${buttonType.name}
+                            </option>
+                    </select>
+                </div>
+
+            </form>
+        </ux-dialog-body>
+
+        <ux-dialog-footer>
+            <button class="btn btn-primary pmd-btn-raised" click.trigger="ok($event)">
+                <i class="mdi mdi-check"></i> Да
+            </button>
+
+            <button class="btn btn-default pmd-btn-raised" click.trigger="dialogController.cancel()">Отмена</button>
+        </ux-dialog-footer>
+
+        <au-loader if.bind="isLoading"></au-loader>
+    </ux-dialog>
+</div>
+</template>

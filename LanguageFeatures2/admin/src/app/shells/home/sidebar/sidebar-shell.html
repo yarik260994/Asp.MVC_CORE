@@ -1,0 +1,22 @@
+﻿<template>
+    <require from="./item/item"></require>
+    <require from="./sidebar-shell.css"></require>
+
+    <div class="sidebar-shell-wrapper">
+        <div class="pmd-card pmd-z-depth-1 height-100-relative">
+            <div class="pmd-card-header primary" ref="panelHeading">
+                <h3 class="pmd-card-title-text text-muted">Пользователи</h3>
+            </div>
+            <div class="pmd-card-body height-100 overflow-scroll-y">
+                <div class="overflow-hidden">
+                    <user-item repeat.for="$user of users" data.bind="$user" delete.call="delete($user, $event)"></user-item>
+                </div>
+            </div>
+            <div class="pmd-card-actions-absolute clearfix">
+                <button disabled.bind="false" class="btn width-100 pmd-btn-raised pmd-btn-outline btn-primary" type="button" click.trigger="add()">
+                    <i class="mdi mdi-plus pmd-sm"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</template>

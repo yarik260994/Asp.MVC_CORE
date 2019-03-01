@@ -1,0 +1,84 @@
+html {
+    display: block;
+    height: 100vh;
+    overflow: hidden;
+}
+
+section.content {
+    flex: 1;
+    padding-top: 0px;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+/*MDI icons*/
+
+.mdi::before {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.btn .mdi::before {
+    position: relative;
+}
+
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+
+.card-item {
+    .header {
+        background: #eee;
+        font-size: 18px;
+        padding: 4px 4px;
+        &.active {
+            background-color: #337ab7;
+            color: #fff;
+            &:hover {
+                background: #337ab7;
+            }
+        }
+    }
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.overflow-scroll-y {
+    overflow-y: scroll !important;
+}
+
+notification-host {
+    display: block;
+    transition: opacity .2s linear;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 0;
+    z-index: 1000;
+}
+
+.mdi-check:before {
+    font-size: 18px;
+    line-height: 0;
+}

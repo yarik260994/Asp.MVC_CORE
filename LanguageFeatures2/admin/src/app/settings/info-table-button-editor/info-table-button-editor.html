@@ -1,0 +1,104 @@
+﻿<template>
+    <require from="../table-button-editor.css"></require> 
+    <require from="../grid/grid"></require>
+    
+    <div class="pmd-card-body col-lg-7 col-md-12 button-editor">
+        <div class="row form-group">
+            <div class="col-md-5 col-sm-12">Текст кнопки</div>
+
+            <div class="col-md-7 col-sm-12">
+                <input
+                    value.bind="tableButton.Text"
+                    type="text"
+                    class="form-control"
+                ></input>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-5 col-sm-12">Заголовок страницы</div>
+
+            <div class="col-md-7 col-sm-12">
+                <input
+                    value.bind="tableButton.Table.Title"
+                    type="text"
+                    class="form-control"
+                ></input>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-5 col-sm-12">
+                Сообщение на экране печати документа
+            </div>
+
+            <div class="col-md-7 col-sm-12">
+                <input
+                    value.bind="tableButton.Table.Message"
+                    type="text"
+                    class="form-control"
+                ></input>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-5 col-sm-12">Колонка номер изображения</div>
+
+            <div class="col-md-2">
+                <label class="pmd-checkbox">
+                    <input
+                        change.delegate="onShowNumberChecked($event.target.checked)"
+                        checked.bind="tableButton.Table.Info.ImageNumberColumn"
+                        type="checkbox"
+                        class="pm-ini"
+                    ></input>
+
+                    <span class="pmd-checkbox-label"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-5 col-sm-12">Документ для печати</div>
+
+            <div class="col-md-1">
+                <label class="pmd-checkbox">
+                    <input
+                        change.delegate="onDocumentToPrintChecked(tableButton)"
+                        checked.bind="showDocumentForPrint"
+                        type="checkbox"
+                        class="pm-ini"
+                    ></input>
+
+                    <span class="pmd-checkbox-label"></span>
+                </label>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <select
+                    value.bind="tableButton.Table.PrintDocument"
+                    disabled.bind="!showDocumentForPrint"
+                    class="form-control"
+                >
+                <option value=""></option>
+                    <option repeat.for="printFile of printFileList">${printFile.FileName}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+<!-- Дополнительные переменные нужны для того чтоб использовать грид в двух редакторах -->
+    <div class="pmd-card-body col-md-12 button-editor">
+            <grid view-model.ref="grid"
+            edit-percent-row.bind="editPercentRow"
+            print-file-list.bind="printFileList"
+            table-button.bind="tableButton"
+            row-to-add.bind="rowToAdd"
+            date-time-column.bind="null"
+            columns-count.bind="2"
+            print-file-column.bind="false"
+            image-list.bind="imageList"
+            url-for-img.bind="urlForImg"
+            show-img-number.bind="tableButton.Table.Info.ImageNumberColumn"
+        ></grid>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+﻿.document-print {
+    position: fixed; top: 0; width: 100%; height: 100vh;background: #fafafa; z-index: 100; // чтобы закрыть весь экран фоном как в мокапе
+
+    display: table;
+
+    .document-print-body
+    {
+        display: table-cell;
+        vertical-align: middle;
+        .pmd-card
+        {
+            margin-bottom: 0; // 30 пикселов из pmd-card мешают вертикальному выравниванию
+            .pmd-card-body
+            {
+                color: inherit;
+                .pmd-card-subtitle-text {
+                    color: inherit;
+                    font-size: 72%; line-height: 3; // чтобы было приблизительно как в мокапе
+                }
+            }
+        }
+    }
+}

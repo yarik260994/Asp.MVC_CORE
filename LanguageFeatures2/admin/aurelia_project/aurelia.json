@@ -1,0 +1,223 @@
+{
+    "name": "aurelia-cli-app",
+    "type": "project:application",
+    "transpiler": {
+        "id": "typescript",
+        "displayName": "TypeScript",
+        "fileExtension": ".ts",
+        "dtsSource": [
+            "./custom_typings/**/*.d.ts"
+        ],
+        "source": "src/app/**/*.ts"
+    },
+    "markupProcessor": {
+        "id": "none",
+        "displayName": "None",
+        "fileExtension": ".html",
+        "source": "src/app/**/*.html"
+    },
+    "cssProcessor": {
+        "id": "sass",
+        "displayName": "Sass",
+        "fileExtension": ".scss",
+        "source": "src/app/**/*.scss"
+    },
+    "editor": {
+        "id": "vscode",
+        "displayName": "Visual Studio Code"
+    },
+    "platform": {
+        "id": "default",
+        "displayName": "Default",
+        "output": "scripts",
+        "root": "src/**/*.*"
+    },
+    "run": {
+        "basePath": "dist"
+    },
+    "workflow": null,
+    "defaultOrCustom": "custom",
+    "copyVendorCss": {
+        "output": "dist/css",
+        "filename": "vendor-styles.css",
+        "sources": [
+            "node_modules/mdi/css/*.min.css",
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "node_modules/propellerkit/dist/css/propeller.min.css"
+        ]
+    },
+    "paths": {
+        "root": "src",
+        "app": "app",
+        "config": "app/config",
+        "resources": "app/resources",
+        "elements": "app/resources/elements",
+        "attributes": "app/resources/attributes",
+        "valueConverters": "app/resources/value-converters",
+        "bindingBehaviors": "app/resources/binding-behaviors"
+    },
+    "build": {
+        "copyFiles": {
+            "src/app/assets/images/**/*.*": "dist/images",
+            "node_modules/mdi/fonts/*": "dist/fonts",
+            "src/app/assets/fonts/*": "dist/fonts",
+            "src/*.*": "dist"
+        },
+        "targets": [{
+            "id": "web",
+            "displayName": "Web",
+            "baseUrl": "scripts",
+            "output": "dist/scripts"
+        }],
+        "loader": {
+            "type": "require",
+            "configTarget": "vendor-bundle.js",
+            "includeBundleMetadataInConfig": "auto",
+            "plugins": [{
+                "name": "text",
+                "extensions": [
+                    ".html",
+                    ".css"
+                ],
+                "stub": true
+            }]
+        },
+        "options": {
+            "minify": {
+                "prod": {
+                    "mangle": {
+                        "keep_fnames": true,
+                        "toplevel": true
+                    }
+                },
+                "stage": {}
+            },
+            "sourcemaps": "dev & stage"
+        },
+        "bundles": [{
+                "name": "app-bundle.js",
+                "source": [
+                    "[**/*.js]",
+                    "**/*.{css,html}"
+                ]
+            },
+            {
+                "name": "vendor-bundle.js",
+                "prepend": [
+                    "node_modules/js-polyfills/polyfill.min.js",
+                    "node_modules/bluebird/js/browser/bluebird.core.js",
+                    "./custom-scripts/configure-bluebird.js",
+                    "node_modules/r-a-f/r-a-f.js",
+                    "node_modules/requirejs/require.js"
+                ],
+                "dependencies": [
+                    "aurelia-binding",
+                    "aurelia-bootstrapper",
+                    "aurelia-dependency-injection",
+                    "aurelia-event-aggregator",
+                    "aurelia-framework",
+                    "aurelia-history",
+                    "aurelia-history-browser",
+                    "aurelia-loader",
+                    "aurelia-loader-default",
+                    "aurelia-logging",
+                    "aurelia-logging-console",
+                    "aurelia-metadata",
+                    "aurelia-pal",
+                    "aurelia-pal-browser",
+                    "aurelia-path",
+                    "aurelia-polyfills",
+                    "aurelia-route-recognizer",
+                    "aurelia-router",
+                    "aurelia-task-queue",
+                    "aurelia-http-client",
+                    "aurelia-templating",
+                    "aurelia-templating-binding",
+                    {
+                        "name": "text",
+                        "path": "../node_modules/requirejs-text/text"
+                    },
+                    {
+                        "name": "aurelia-templating-resources",
+                        "path": "../node_modules/aurelia-templating-resources/dist/amd",
+                        "main": "aurelia-templating-resources"
+                    },
+                    {
+                        "name": "aurelia-templating-router",
+                        "path": "../node_modules/aurelia-templating-router/dist/amd",
+                        "main": "aurelia-templating-router"
+                    },
+                    {
+                        "name": "aurelia-dialog",
+                        "path": "../node_modules/aurelia-dialog/dist/amd",
+                        "main": "aurelia-dialog"
+                    },
+                    {
+                        "name": "aurelia-validation",
+                        "path": "../node_modules/aurelia-validation/dist/amd",
+                        "main": "aurelia-validation"
+                    },
+                    {
+                        "name": "aurelia-configuration",
+                        "path": "../node_modules/aurelia-configuration/dist/amd",
+                        "main": "index"
+                    },
+                    "moment",
+                    {
+                        "name": "aurelia-notify",
+                        "path": "../node_modules/aurelia-notify/dist/amd",
+                        "main": "aurelia-notify",
+                        "resources": [
+                            "bs-notification.html",
+                            "style.css"
+                        ]
+                    },
+                    {
+                        "name": "aurelia-dragula",
+                        "path": "../node_modules/aurelia-dragula/dist/amd",
+                        "main": "index",
+                        "resources": [
+                            "*.js",
+                            "*.html",
+                            "*.css"
+                        ]
+                    },
+                    {
+                        "name": "flatpickr",
+                        "main": "dist/flatpickr.js",
+                        "path": "../node_modules/flatpickr",
+                        "resources": [
+                            "dist/flatpickr.css",
+                            "dist/flatpickr.min.css",
+                            "dist/ie.css",
+                            "dist/plugins/confirmDate/confirmDate.css",
+                            "dist/themes/airbnb.css",
+                            "dist/themes/confetti.css",
+                            "dist/themes/dark.css",
+                            "dist/themes/light.css",
+                            "dist/themes/material_blue.css",
+                            "dist/themes/material_green.css",
+                            "dist/themes/material_orange.css",
+                            "dist/themes/material_red.css"
+                        ]
+                    },
+                    {
+                        "name": "aurelia-flatpickr",
+                        "main": "index",
+                        "path": "../node_modules/aurelia-flatpickr/dist/amd",
+                        "resources": [
+                            "*.js",
+                            "*.html",
+                            "*.css"
+                        ]
+                    },
+                    {
+                        "name": "moment",
+                        "path": "../node_modules/moment",
+                        "main": "moment"
+                    }
+                ]
+            }
+        ]
+    }
+}

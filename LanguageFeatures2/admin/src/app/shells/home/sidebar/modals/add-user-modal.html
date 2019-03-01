@@ -1,0 +1,28 @@
+<template>
+    <ux-dialog class="ux-dialog-sm">
+        <ux-dialog-header class="modal-header">
+            <div class="modal-title">
+                Добавить нового пользователя
+            </div>
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <form class="bg-white">
+                <div class="form-group">
+                    <label class="control-label">Имя пользователя:</label>
+                    <input type="text" class="form-control" placeholder="Введите название..." value.bind="data.Name">
+                </div>
+
+            </form>
+        </ux-dialog-body>
+
+        <ux-dialog-footer>
+            <button class="btn btn-primary pmd-btn-raised" click.trigger="ok($event)">
+                <i class="mdi mdi-check"></i> Да
+            </button>
+
+            <button class="btn btn-default pmd-btn-raised" click.trigger="dialogController.cancel()">Отмена</button>
+        </ux-dialog-footer>
+
+        <au-loader if.bind="isLoading"></au-loader>
+    </ux-dialog>
+</template>

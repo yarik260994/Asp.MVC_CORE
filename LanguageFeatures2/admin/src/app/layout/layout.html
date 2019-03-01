@@ -1,0 +1,113 @@
+﻿<template>
+        <loader if.bind="showLoader"></loader> 
+        <require from="./layout.css"></require>
+        <require from="./ui-elements/ui-elements"></require>
+        <div class="layout" if.bind="showLayout">
+                <div class="layout-container">
+                    <div class="col-xs-4 ">
+                            <div class="row radio-row">
+                                <div class="col-xs-2 check-position">
+                                    <div class="radio-container">
+                                        <label class="top-checkbox checkbox-inline pmd-radio pmd-radio-ripple-effect">
+                                                <input type="radio"  name="layouttype" model.bind="1" checked.bind="layoutSettings.Variant"  class="pm-ini">
+                                            <span class="pmd-radio-label"></span>
+                                        </label>
+                                    </div>
+                                </div>  
+                                <div class="col-xs-10 img-container" >
+                                    <div class="pmd-card-top-layout pmd-card pmd-z-depth-1"></div>
+                                </div>
+                            </div>
+                            <div class="row radio-row">
+                                <div class="col-xs-2 check-position">
+                                    <div class="radio-container">
+                                        <label class="bot-checkbox checkbox-inline pmd-radio pmd-radio-ripple-effect">
+                                            <input type="radio"  model.bind="2" checked.bind="layoutSettings.Variant" name="layouttype" class="pm-ini">
+                                            <span class="pmd-radio-label"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 img-container">                     
+                                    <div class="pmd-card-bot-layout pmd-card pmd-z-depth-1"></div>                        
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-xs-8 right-container pmd-z-depth-1">
+                            <div class="row">    
+                                <div class="col-xs-3">
+                                    Название мероприятия
+                                </div>
+                                <div class="col-xs-4 hor-padding">
+                                    <input type="text" value.bind="layoutSettings.EventName"  class="form-control" >
+                                </div>
+                            </div>
+                            <div class="row">    
+                                    <div class="col-xs-3">
+                                        Логотип
+                                    </div>
+                                    <div class="col-xs-4 hor-padding">
+                                        <select value.bind="layoutSettings.Logo.src"  class="form-control">
+                                            <option value=""></option>
+                                            <option repeat.for="img of imgList">${img.FileName}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <span class="crosses-position mdi mdi-arrow-expand-all"></span>
+                                        <select value.bind="layoutSettings.Logo.Foreground" class="logo-sett form-control">
+                                            <option model.bind="1">Вверху-слева</option>
+                                            <option model.bind="2">Вверху-справа</option>
+                                            <option model.bind="3">Ввeрху-центр</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">    
+                                    <div class="col-xs-3">
+                                        Цвет фона/<br />изображение
+                                    </div>
+                                    <div class="col-xs-4 hor-padding">
+                                        <select value.bind="layoutSettings.Background.backgroundImage" class="form-control">
+                                            <option value=""></option>    
+                                            <option repeat.for="img of imgList">${img.FileName}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="btn-group-top">
+                                                <color-selector selected-color.bind="layoutSettings.Background.backgroundColor" color-selector-type = 'backgroundColor'></color-selector>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="bot-line">
+                                    <h3 class="line-text pallete-line"><span class="mdi mdi-palette"></span>Цвет/фон/шрифты для элементов интерфейса</h3>
+                                </div>
+                                <ui-elements style.bind="layoutSettings.Name"  title = 'Название мероприятия/ события/компании' show-background-selector.bind="false"></ui-elements> 
+                                <ui-elements style.bind="layoutSettings.FirstLevelButtons"  title = 'Кнопки первого уровня'></ui-elements>
+                                <ui-elements style.bind="layoutSettings.PrintButtons"  title = 'Кнопки печати'></ui-elements>
+                                <ui-elements style.bind="layoutSettings.WindowTitles"  title = 'Заголовки окон'></ui-elements>
+                                <ui-elements style.bind="layoutSettings.PrintMessages"  title = 'Сообщения о печати'></ui-elements>
+                                <ui-elements style.bind="layoutSettings.Table"  title = 'Таблица'></ui-elements> 
+                                 <div class="row">
+                                    <div class="col-md-3 padding-on-small">
+                                        Сетка таблицы
+                                    </div>
+                                    <div class="col-xs-4 col-md-3">
+                                        <div class="col-xs-6">
+                                                <color-selector selected-color.bind="layoutSettings.TableGridColor" color-selector-type = 'backgroundColor'></color-selector>
+                                        </div>                      
+                                        <div class="col-xs-6">
+                                            <input type="number" value.bind="layoutSettings.TableGridSize" class="number-selector form-control" value="1">  
+                                        </div>                           
+                                    </div>
+                                </div>
+                                <div class="btn-container">
+                                    <button click.delegate="onSaveClick()"  class="btn pmd-btn-raised pmd-ripple-effect btn-default">
+                                        <span class="mdi mdi-content-save-outline">Сохранить</span>
+                                    </button>        
+                                    <button click.delegate="onResetClick()" class="pull-right btn pmd-btn-raised pmd-ripple-effect btn-default">
+                                        <span class="mdi mdi-delete">Сбросить</span>
+                                    </button>
+                                </div>               
+                        </div>
+                    </div>
+                </div>
+            </template>

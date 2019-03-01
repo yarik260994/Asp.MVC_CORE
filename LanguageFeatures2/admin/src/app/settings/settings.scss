@@ -1,0 +1,20 @@
+﻿.height-100-relative {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .editor-content {
+        flex: 1;
+        overflow: auto;
+    }
+    .pmd-card {
+        margin-bottom: 15px; // пришлось переопределить потому что 30 в pmd-card слишком много - некрасиво
+    }
+    .button-list {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .breadcrumb {
+        padding: .625rem .75rem; //скопировано из btn чтоб высота breadcrumb совпадала с высотой панели кнопок слева 
+    }
+}

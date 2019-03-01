@@ -1,0 +1,43 @@
+{
+    "version": "0.1.0",
+    "tasks": [
+        {
+            "taskName": "DEV watch",
+            "command": "au",
+            "isShellCommand": true,
+            "echoCommand": true,
+            "args": [
+                "run",
+                "--watch"
+            ],
+            "showOutput": "always",
+            "isBackground": true,
+            "isBuildCommand": true,
+            "problemMatcher": [
+                "$lessCompile",
+                "$tsc",
+                "$jshint"
+            ]
+        },
+        {
+            "taskName": "PROD watch",
+            "command": "au",
+            "isShellCommand": true,
+            "echoCommand": true,
+            "args": [
+                "run",
+                "--watch",
+                "--env",
+                "prod"
+            ],
+            "showOutput": "always",
+            "isBackground": true,
+            "isBuildCommand": true,
+            "problemMatcher": [
+                "$lessCompile",
+                "$tsc",
+                "$jshint"
+            ]
+        }
+    ]
+}

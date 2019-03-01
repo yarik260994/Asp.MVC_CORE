@@ -1,0 +1,59 @@
+﻿<template>
+    <loader if.bind="showLoader"></loader>
+    <require from="./buttons-list.css"></require>
+
+    <div class="height-100-relative-title-line">
+        <button
+            click.delegate="onBtnSaveClick()"
+            class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-content-save-outline"
+        ></button>
+
+        <button
+            click.delegate="add()"
+            class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-plus"
+        ></button>
+
+        <button
+            click.delegate="remove()"
+            class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-close"
+        ></button>
+
+        <button class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-arrow-left-bold pull-right" disabled.bind="isMainLevel" click.delegate="onPrevLevel()"></button>
+    </div>
+
+    <div class="pmd-card pmd-z-depth pmd-card-settings-group overflow-scroll-y">
+        
+
+        <div data-type="ButtonsList" class="drag-source drop-target drop-style pmd-card-body overflow-hidden">
+            <div
+                repeat.for="button of currentLevelButtons"
+                data-index="${$index}"
+                css="background:${button == selectedButton ? '#eeeeee' : 'none'}"
+                click.delegate="selectButton(button)"
+                class="settings-list-item pmd-card pmd-z-depth cursor-pointer"
+            >
+                <div
+                    if.bind="button.Level"
+                    class="pull-right mdi mdi-subdirectory-arrow-right"
+                ></div>
+
+                <div
+                    if.bind="button.Print"
+                    class="pull-right mdi mdi-printer"
+                ></div>
+
+                <div
+                    if.bind="button.Table && button.Table.Common"
+                    class="pull-right mdi mdi-calendar"
+                ></div>
+
+                <div
+                if.bind="button.Table && button.Table.Info"
+                class="pull-right mdi mdi-table"
+            ></div>
+
+                ${button.Text}
+            </div>
+        </div>
+    </div>
+</template>

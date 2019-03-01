@@ -1,0 +1,11 @@
+﻿<template>
+    <require from="./home-router.css"></require>
+
+    <section class="col-xs-2 col-sm-2 col-md-2 col-lg-2 height-100-relative">
+        <router-view name="sidebar"></router-view>
+    </section>
+
+    <section class="col-xs-10 col-sm-10 col-md-10 col-lg-10 height-100-relative">
+        <router-view name="shell"></router-view>
+    </section>
+</template>

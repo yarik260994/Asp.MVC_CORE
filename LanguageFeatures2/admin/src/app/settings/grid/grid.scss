@@ -1,0 +1,28 @@
+﻿.grid {
+    width: 100%;
+    table-layout: fixed;
+    tr {
+        .last-column {
+            width: 100px;
+        }
+        td {
+            .btn {
+                padding: 4px;
+            }
+        }
+        min-height: 40px;
+        &.percent {
+            .form-control {
+                width: 90%;
+                display: inline;
+            }
+        }
+    }
+    .text-wrap {
+        word-wrap: break-word;
+    }
+    .mdi-check:before {
+        font-size: 24px;
+        line-height: 24px;
+    }
+}

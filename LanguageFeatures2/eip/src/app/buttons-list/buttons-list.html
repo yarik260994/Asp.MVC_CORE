@@ -1,0 +1,24 @@
+<template>
+    <require from="./buttons-list.css"></require>
+
+        <table class="buttons-list table-style height-100 width-100">
+            <tr repeat.for="row of settingsHelper.splitButtons( 
+                !button && settingsHelper.settings.Layout.Variant == layoutVariant.ThreeSectionsWithLogo,
+                button ? button.Level.Buttons : settingsHelper.settings.Buttons)">
+                <td repeat.for="button of row" colspan="${12 / row.length}" >
+                    <div class="height-100 width-100">
+                    <a 
+                         class="center-block text-center pmd-card kiosk-button"
+                         css.bind="settingsHelper.firstLevelButtonStyle"
+                        route-href="route.bind: button.Level ? 'level-button' 
+                            : (button.Table && button.Table.Info ? 'info-table' 
+                                : (button.Table && button.Table.Common ? 'button-table' 
+                                    :'document-print')); 
+                        params.bind: {id: button.Id}"
+                    >${button.Text}</a>
+                </div>
+                </td>
+            </tr>
+        </table>
+    
+</template>

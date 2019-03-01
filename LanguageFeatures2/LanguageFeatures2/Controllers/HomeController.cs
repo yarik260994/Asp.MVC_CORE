@@ -1,21 +1,16 @@
 ﻿using LanguageFeatures2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LanguageFeatures2.Controllers
 {
     public class HomeController: Controller
     {
-        public ViewResult Index()
-        {
-            List<string> productList = new List<string>();
+        public async System.Threading.Tasks.Task<ViewResult> Index() {
+            long? length = await MyAsyncMethod.GetPageLengthAsync();
 
-            foreach (Product p in Product.GetProducts())
-            {
-                productList.Add($"Name:{p?.Name ?? "<no name>"}, Price:{p?.Price ?? 0}, RelatedName:{p?.Related?.Name?? "<no name>"}, {p?.Category}");
-            }
-
-            return View(productList);
+            return View(new string[] { $"{length}" });
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿<template>
+    <require from="./main.css"></require>
+    <require from="../buttons-list/buttons-list"></require>
+    <loader if.bind="showLoader"></loader>
+    <table
+        class="main background text-center height-100 width-100"
+        css.bind="settingsHelper.backgroundStyle"
+    >
+        <tr>
+            <td>
+                <img if.bind="settingsHelper.backgroundImg"
+                    src="${settingsHelper.backgroundImg}"
+                    class="background-img-size"
+                    alt=""
+                >
+            </td>
+        </tr>
+    </table>
+
+    <table class="main height-100 width-100">
+        <tr>
+            <td
+                if.bind="settingsHelper.settings.Layout.Variant == layoutVariant.ThreeSectionsWithLogo"
+                class="logo-content"
+            >
+                <table>
+                    <tr>
+                        <div class="${settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topCenter ? 'text-center' :'logo-container width-100'} clearfix">
+                            <template repeat.for="i of 2">
+                                <div
+                                    if.bind="i == (settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topRight ? 1 : 0)"
+                                    class="${settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topRight ? 'pull-right' : (settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topLeft ? 'pull-left' : '')}"
+                                >
+                                    <img
+                                        if.bind="settingsHelper.settings.Layout.Logo.src"
+                                        src="${settingsHelper.imgUrl}/?filename=${settingsHelper.settings.Layout.Logo.src}"
+                                    >
+                                </div>
+
+                                <div
+                                    if.bind="i == (settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topRight ? 0 : 1)"
+                                    css="${settingsHelper.nameStyle} ${settingsHelper.settings.Layout.Logo.Foreground == logoPosition.topLeft ? 'padding-left: 5px;' : 'padding-right: 5px;'}"
+                                    class="${settingsHelper.settings.Layout.Logo.Foreground != logoPosition.topCenter ? 'logo-text width-100' :''}"
+                                >
+                                    ${settingsHelper.settings.Layout.EventName}
+                                </div>
+                            </template>
+</div>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr class="height-100">
+    <td as-element="buttons-list" settings-helper.bind="settingsHelper"></td>
+</tr>
+</table>
+</template>

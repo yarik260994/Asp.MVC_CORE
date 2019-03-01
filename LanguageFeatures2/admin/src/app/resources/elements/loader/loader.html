@@ -1,0 +1,8 @@
+﻿<template>
+    <require from="./loader.css"></require>
+    <div class="loader">
+        <div  class="sk-fading-circle">
+            <div repeat.for="i of numberOfCircles" class="sk-circle${i+1} sk-circle"></div>
+        </div>
+    </div>
+</template>

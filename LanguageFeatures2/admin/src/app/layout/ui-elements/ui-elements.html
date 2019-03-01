@@ -1,0 +1,34 @@
+﻿<template>
+        <require from="./ui-elements.css"></require>
+<div class="ui-elements">
+    <div class="row">
+        <div class="col-md-3 padding-on-small">
+            ${title}
+        </div>
+        <div class="col-xs-4 col-md-3">
+            <div class="col-xs-6">
+                    <color-selector selected-color.bind="style.color" color-selector-type = 'textColor'></color-selector> 
+            </div>
+            <div class="col-xs-6">
+                    <color-selector if.bind="showBackgroundSelector" selected-color.bind="style.backgroundColor" color-selector-type = 'backgroundColor'></color-selector> 
+            </div> 
+        </div>
+        <div class="col-xs-3 col-md-2 col-lg-3">
+            <select value.bind="style.fontFamily" class="form-control">
+                <option>Arial</option>
+                <option>Sans Serif</option>
+                <option>Times New Roman</option>
+                <option>Verdana</option>
+            </select>
+        </div>
+        <div class="col-xs-5 col-md-4 col-lg-3">                          
+            <input value.bind="style.fontSize" type="number" class="number-selector form-control">                         
+            <div class="check-container">
+                <button click.delegate="onBoldClick()" class="pull-left check-font ${style.fontWeight == 'bold' ? 'inset':''}">B</button>
+                <button click.delegate="onItalicClick()"  class="pull-left font-italic check-font ${style.fontStyle == 'italic' ? 'inset':''}">I</button>
+                <button click.delegate="onUnderlineClick()"   class="pull-left font-underline check-font ${style.textDecoration == 'underline' ? 'inset':''}">U</button>
+            </div>                           
+        </div>
+    </div>
+</div>
+</template>

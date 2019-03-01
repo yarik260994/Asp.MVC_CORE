@@ -1,0 +1,57 @@
+﻿body {
+  height: 100%;
+}
+
+.login {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-container {
+    max-width: 333px;
+
+    .sing-in {
+      display: inherit;
+      height: 35px;
+      font-size: 19px;
+      color: #444444;
+      background-color: #e0e0e0;
+      text-align: center;
+      border-width: 0;
+      border: 1px solid #9e9e9e;
+      padding-left: 7px;
+    }
+
+    .card-header-border {
+      margin-bottom: 25px;
+    }
+
+    .input-container {
+      .form-valid {
+        color: red;
+      }
+
+      i.mdi:before {
+        font-size: 24px;
+      }
+    }
+
+    .log-icon {
+      color: #424242;
+      font-size: 16px;
+    }
+
+    .mdi::before {
+      font-size: 19px;
+      line-height: 14px;
+      top: 2px;
+    }
+
+    .input-group {
+      width: 100%;
+      padding-left: 5px;
+      padding-top: 5px;
+    }
+  }
+}

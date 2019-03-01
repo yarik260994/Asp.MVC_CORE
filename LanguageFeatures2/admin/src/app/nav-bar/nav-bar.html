@@ -1,0 +1,25 @@
+﻿<template>
+    <div class="menu">
+            <require from="./nav-bar.css"></require>
+    <nav class="navbar navbar-inverse pmd-navbar pmd-z-depth ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand cursor-default">Информационный киоск</a>
+                </div>
+    
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                            <a href="${row.href}" class="waves-effect waves-block">
+                                <i class="${row.settings.icon}"></i>
+                                <span>${row.settings.title}</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                    <button class="btn pmd-btn-raised pmd-ripple-effect mdi mdi-logout-variant" click.delegate="logout()"></button> 
+                </div> 
+            </div>
+        </nav>
+    </div>
+</template>

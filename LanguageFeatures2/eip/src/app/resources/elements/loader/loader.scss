@@ -1,0 +1,69 @@
+﻿$number-of-circles:12;
+$animation-delay:-1.2;
+$angle:360/$number-of-circles;
+$loader-size:140px;
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    .sk-fading-circle {
+        width: $loader-size;
+        height: $loader-size;
+        position: relative;
+    }
+    .sk-fading-circle .sk-circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .sk-fading-circle .sk-circle:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 15%;
+        height: 15%;
+        background-color: black;
+        border-radius: 100%;
+        -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+        animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+    }
+    @for $i from 1 through $number-of-circles {
+        .sk-fading-circle .sk-circle#{($i)} {
+            -webkit-transform: rotate(#{($i * $angle) + "deg"});
+            -ms-transform: rotate(#{($i * $angle) + "deg"});
+            transform: rotate(#{($i * $angle) + "deg"});
+        }
+        .sk-fading-circle .sk-circle#{($i)}:before {
+            -webkit-animation-delay: #{($animation-delay +($i/10)) + "s"};
+            animation-delay: #{($animation-delay +($i/10)) + "s"};
+        }
+    }
+    @-webkit-keyframes sk-circleFadeDelay {
+        0%,
+        39%,
+        100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
+    @keyframes sk-circleFadeDelay {
+        0%,
+        39%,
+        100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
+}

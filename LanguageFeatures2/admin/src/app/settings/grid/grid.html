@@ -1,0 +1,113 @@
+﻿<template>
+  <require from="./grid.css"></require>
+
+              
+                <table class="table table-bordered grid">
+                <thead class="table-title">
+                    <tr class="text-wrap">
+                        <th scope="col" class="title-font" if.bind="dateTimeColumn" css="width:${tableButton.Table.ColumnWidths[0]}%">Время</th>
+                        <th scope="col" class="title-font" if.bind="tableButton.Table.Info && showImgNumber" css="width:${tableButton.Table.ColumnWidths[0]}%">Номер</th>
+                        <th scope="col" class="title-font" repeat.for="i of columnsCount" css="width:${tableButton.Table.ColumnWidths[$index + 1]}%">
+                            <span if.bind="tableButton.Table.Common">Колонка ${$index + 1}</span>
+                            <span if.bind="tableButton.Table.Info && $index==0">Изображенние</span>
+                            <span if.bind="tableButton.Table.Info && $index==1">Описание</span>
+                        </th>
+                        <th scope="col" class="title-font" if.bind="printFileColumn" css="width:${tableButton.Table.ColumnWidths[tableButton.Table.ColumnWidths.length - 1]}%">Файл для печати</th>
+                        <th scope="col" class="title-font last-column"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                  <tr class="percent">
+                    <td repeat.for="width of tableButton.Table.ColumnWidths" ><input type="text"  class="form-control" value.bind="editPercentRow[$index]"/>%</td>
+                    <td class="text-center">
+                        <button
+                            click.delegate="saveClick()"
+                            class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-content-save-outline"
+                        ></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td if.bind="dateTimeColumn" > 
+                        <aurelia-flatpickr if.bind="dateTimeColumn == 'DateTime'" config.bind='{ noCalendar: false, altInput: true, altFormat: "d.m.Y H:i", time_24hr: true }' value.bind="addDetaTime"></aurelia-flatpickr>
+                        <aurelia-flatpickr if.bind="dateTimeColumn == 'Time'" config.bind='{ noCalendar: true, altInput: true, altFormat: "H:i", time_24hr: true }' value.bind="addDetaTime"></aurelia-flatpickr>
+                    </td>
+                    <td if.bind="tableButton.Table.Info  && showImgNumber" > 
+                            
+                    </td>
+                    <td  repeat.for="i of columnsCount" >
+                         <select if.bind="tableButton.Table.Info  && $index == 0"
+                                value.bind="rowToAdd[showImgNumber ? 1 : 0]"
+                                class="form-control"
+                            >
+                            <option value=""></option>
+                            <option repeat.for="image of imageList">${image.FileName}</option>
+                        </select>
+                        <textarea  rows="4" if.bind="tableButton.Table.Info && $index != 0" class="form-control" value.bind="rowToAdd[$index+(showImgNumber ? 1 : 0)]"></textarea>
+                        <textarea  rows="4"  if.bind="tableButton.Table.Common" class="form-control" value.bind="rowToAdd[$index + (tableButton.Table.Common.DateTimeColumn ? 1 : 0)]"></textarea></td>
+                        <td if.bind="printFileColumn" >
+                        <select
+                            value.bind="rowToAdd[rowToAdd.length - 1]"
+                            class="form-control"
+                        >
+                            <option value=""></option>
+                            <option repeat.for="printFile of printFileList">${printFile.FileName}</option>
+                        </select>
+                    </td>
+                    <td class="text-center">
+                        <button
+                            click.delegate="addRow()"
+                            class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-plus"
+                        ></button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody data-type="TableButtonEditor" class="drag-source drop-target drop-style table-bordered">
+                    <tr class="text-wrap" repeat.for="row of tableButton.Table.Table" data-index="${$index}">
+                        <td repeat.for="td of row" css="${$index == (showImgNumber || tableButton.Table.Common.DateTimeColumnExists ? 0 : -1) ? 'text-align: center;' : ''}">
+                            <span  if.bind="tableButton.Table.Common && selectedRow != row" innerhtml.bind="td"></span>
+                            <aurelia-flatpickr if.bind="dateTimeColumn == 'DateTime' && selectedRow == row && $index == 0" config.bind='{ noCalendar: false, altInput: true, altFormat: "d.m.Y H:i", time_24hr: true }' value.bind="editableDetaTime"></aurelia-flatpickr>
+                            <aurelia-flatpickr if.bind="dateTimeColumn == 'Time' && selectedRow == row && $index == 0" config.bind='{ noCalendar: true, altInput: true, altFormat: "H:i", time_24hr: true }' value.bind="editableDetaTime"></aurelia-flatpickr>
+                            <textarea  rows="4" if.bind="selectedRow == row && tableButton.Table.Info && $index !=  (row.length - 2) " type="text" class="form-control" value.bind="editableRow[$index]" ></textarea>
+                            <textarea  rows="4" if.bind="selectedRow == row && tableButton.Table.Common &&  ($index != (row.length - 1) || !tableButton.Table.Common.PrintFileColumn) && ($index != 0 || !tableButton.Table.Common.DateTimeColumn)" type="text" class="form-control" value.bind="editableRow[$index]" ></textarea>                       
+                            <select if.bind="tableButton.Table.Common && selectedRow == row && $index == (row.length - 1) && tableButton.Table.Common.PrintFileColumn"  value.bind="editableRow[$index]" class="form-control">
+                                <option value=""></option>    
+                                <option repeat.for="printFile of printFileList" model.bind="printFile.FileName">${printFile.FileName}</option>
+                            </select>
+
+                            <span if.bind="tableButton.Table.Info && selectedRow != row && $index != (showImgNumber ? 1 : 0) "  innerhtml.bind="td"></span>
+                            <img src="${urlForImg}/?filename=${esc(td)}" class="img-responsive" if.bind="tableButton.Table.Info && selectedRow != row && $index ==  (row.length - 2)"/>
+                             <select
+                                if.bind="tableButton.Table.Info && selectedRow == row && $index ==(row.length - 2)"
+                                value.bind="editableRow[(row.length - 2)]"
+                                class="form-control"
+                                >
+                                <option repeat.for="image of imageList">${image.FileName}</option>
+                            </select>
+
+                        </td>
+                        <td ><button
+                                if.bind="selectedRow != row"
+                                click.delegate="onEditClick($index)"
+                                class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-pencil"
+                            ></button>
+                            <button
+                                 if.bind="selectedRow != row"
+                                 click.delegate="onDeleteClick($index)"
+                                class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-delete"
+                            ></button>
+                            <button
+                                 if.bind="selectedRow == row"
+                                 click.delegate="onOkClick($index)"
+                                class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-check"
+                            ></button> 
+                            <button
+                                 if.bind="selectedRow == row"
+                                 click.delegate="onCancel()"
+                                class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-close-circle"
+                            ></button>
+                        </td>
+                    </tr>
+                <tbody>
+                </table>
+</template>

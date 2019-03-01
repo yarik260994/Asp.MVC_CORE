@@ -1,0 +1,13 @@
+{
+    "name": "WebAppSkeleton",
+    "api": {
+        "host": "localhost",
+        "port": "2608"
+    },
+    "version": "1.0",
+    "authorization": {
+        "authEndpoint": "http://localhost:5555",
+        "authPath": "/OAuth/Token",
+        "getUserPath": "/api/auth/GetCurrentUser"
+    }
+}

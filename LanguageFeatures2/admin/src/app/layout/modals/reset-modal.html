@@ -1,0 +1,31 @@
+<template>
+    <require from="./reset-modal.css"></require>
+
+    <div class="reset-modal">
+        <ux-dialog class="ux-dialog-sm">
+            <ux-dialog-header class="modal-header">
+                <div class="modal-title">Сброс настроек</div>
+            </ux-dialog-header>
+
+            <ux-dialog-body class="modal-body">
+                <i class="mdi mdi-alert"></i>
+                Текущие настройки будут удалены. Продолжить?
+            </ux-dialog-body>
+
+            <ux-dialog-footer>
+                <button
+                    class="btn btn-primary pmd-btn-raised"
+                    click.trigger="ok($event)"
+                >
+                    <i class="mdi mdi-check"></i>
+                    OK
+                </button>
+
+                <button
+                    class="btn btn-default pmd-btn-raised"
+                    click.trigger="dialogController.cancel()"
+                >Отмена</button>
+            </ux-dialog-footer>
+        </ux-dialog>
+    </div>
+</template>

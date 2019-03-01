@@ -1,0 +1,21 @@
+﻿<template>
+        <require from="./storage.css"></require>
+        <loader if.bind="showLoader"></loader> 
+    <div class="storage" if.bind="showStorage">
+        <button click.delegate="addNewFile()" class="btn pmd-btn-raised pmd-ripple-effect btn-default mdi mdi-plus"></button>
+    <table class="table table-bordered">
+        <thead class="table-title">
+          <tr>
+            <th scope="col" class="title-font">Ресурс</th>
+            <th scope="col" class="title-font">Тип</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="file of downloadedFiles">
+            <td class="td-resource">${file.FileName}</td>
+            <td>${file.FileType}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</template>

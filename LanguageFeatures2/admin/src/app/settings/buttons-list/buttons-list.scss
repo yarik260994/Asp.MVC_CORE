@@ -1,0 +1,17 @@
+﻿.button-list {
+    .height-100-relative-title-line {
+        margin-bottom: 20px; //скопировано из breadcrumb чтоб отступ совпадал с отступом под breadcrumb
+    }
+    .pmd-card-settings-group {
+        flex: 1;
+        .settings-list-item {
+            min-height: 60px; //чтоб было пространство под текстом, но если текс больше, то чтоб высота увеличивалась
+            padding: 10px;
+            outline: none;
+        }
+    }
+    .overflow-scroll-y {
+        overflow-y: auto !important;
+        height: 100%;
+    }
+}

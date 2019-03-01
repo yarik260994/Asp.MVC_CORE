@@ -1,0 +1,25 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "html.format.wrapLineLength": 0,
+    "html.format.unformatted": null,
+    "html.format.indentInnerHtml": true,
+    "editor.formatOnType": true,
+    "files.exclude": {
+        "bin/": true,
+        "obj/": true,
+        "Properties/": true,
+        "Web*.config": true,
+        "packages.config": true,
+        "*.csproj*": true,
+    },
+    "files.encoding": "utf8bom",
+    "statusbar_command.commands": [
+        {
+            "text": "au run --watch $(rocket)",
+            "tooltip": "Aurelia watch",
+            "alignment": "right",
+            "command": "workbench.action.tasks.build"
+        }
+    ]
+}

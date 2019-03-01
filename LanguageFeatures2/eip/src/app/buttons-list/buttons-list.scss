@@ -1,0 +1,12 @@
+.buttons-list {
+    table-layout: fixed;
+    border-spacing: 7px;
+    border-collapse: separate;
+    div {
+        display: table;
+    }
+    a {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}

@@ -1,0 +1,1 @@
+﻿declare function xrxSessionExitApplication(address: string, param?: any): void;
